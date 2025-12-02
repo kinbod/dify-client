@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Element Plus 自定义样式 */
+.el-card {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+}
+
+.el-button {
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+}
+
+.el-input__wrapper {
+  border-radius: 8px !important;
+}
+
+.el-textarea__inner {
+  border-radius: 8px !important;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 动画效果 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .el-card {
+    margin-bottom: 16px;
+  }
+  
+  .el-button {
+    margin-bottom: 8px;
+  }
+  
+  .content-wrapper {
+    padding: 0 16px;
+  }
+}
+
+/* 加载动画 */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(102, 126, 234, 0.3);
+  border-radius: 50%;
+  border-top-color: #667eea;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 商务风格配色 */
+.business-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.business-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.business-button-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+}
+
+.business-button-primary:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* 状态指示器 */
+.status-running {
+  color: #409eff;
+}
+
+.status-success {
+  color: #67c23a;
+}
+
+.status-error {
+  color: #f56c6c;
+}
+
+.status-warning {
+  color: #e6a23c;
+}
+
+/* 工具提示 */
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+/* 文件上传区域 */
+.file-upload-area {
+  border: 2px dashed #dcdfe6;
+  border-radius: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.file-upload-area:hover {
+  border-color: #409eff;
+  background-color: #f0f9ff;
+}
+
+.file-upload-area.dragover {
+  border-color: #409eff;
+  background-color: #f0f9ff;
+  transform: scale(1.02);
+}
+
+/* 工作流节点样式 */
+.workflow-node {
+  position: relative;
+  background: white;
+  border: 2px solid #e8eaed;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.workflow-node.running {
+  border-color: #409eff;
+  background: #f0f9ff;
+}
+
+.workflow-node.success {
+  border-color: #67c23a;
+  background: #f0fff4;
+}
+
+.workflow-node.error {
+  border-color: #f56c6c;
+  background: #fef0f0;
+}
+
+.workflow-node::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 2px 0 0 2px;
+}
+
+.workflow-node.running::before {
+  background: #409eff;
+}
+
+.workflow-node.success::before {
+  background: #67c23a;
+}
+
+.workflow-node.error::before {
+  background: #f56c6c;
+}
+
+/* 节点连接线 */
+.node-connection {
+  position: relative;
+  padding-left: 20px;
+}
+
+.node-connection::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: -8px;
+  width: 2px;
+  background: #e8eaed;
+}
+
+.node-connection:last-child::before {
+  display: none;
+}
+
+/* 代码块样式 */
+.code-block {
+  background: #f8f9fa;
+  border: 1px solid #e8eaed;
+  border-radius: 6px;
+  padding: 16px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #2c3e50;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.code-block.error {
+  background: #fef0f0;
+  border-color: #fbc4c4;
+  color: #f56c6c;
+}
+
+/* 表格样式 */
+.custom-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.custom-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.custom-table tr:hover {
+  background: #f8f9fa;
+}
+
+/* 响应式工具类 */
+.mobile-hidden {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-only {
+    display: block;
+  }
+}

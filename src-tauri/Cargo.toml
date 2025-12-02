@@ -1,0 +1,29 @@
+[package]
+name = "dify-client"
+version = "1.0.0"
+description = "A Tauri 2.9 + Vue 3 + Vite 6 Dify Client"
+authors = ["you"]
+repository = ""
+license = ""
+rust-version = "1.77"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-http = "2"
+tauri-plugin-notification = "2"
+tauri-plugin-store = "2"
+
+[features]
+# This feature flag is used for production builds or when `devPath` points to the filesystem.
+custom-protocol = ["tauri/custom-protocol"]
